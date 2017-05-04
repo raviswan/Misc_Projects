@@ -4,18 +4,23 @@ void Dealer::Dealer(size_t deckCount){
 	for (int i=0; i < 4*deckCount); i++)
 		deck.push(type);
 }
-int Dealer::drawCard(){
-	int card = deck[rand() % 4][rand() % 13];
-	cardCount -= 1;
-	return card;
-}
 
+int Dealer::drawCard(){
+	int playCard = deck.top();
+	drawnCards.emplace_back(card);
+	deck.pop();
+	return playCard;
+}
 
 void Dealer::drawDealerHand(){
 	dealerHand.emplace_back(drawCard());
 	dealerHand.emplace_back(drawCard());
 }
 
+void Dealer::drawPlayerHand(){
+	dealerHand.emplace_back(drawCard());
+	dealerHand.emplace_back(drawCard());
+}
 void initilizePlayers(){
 	for(int i=0;i<PlayerCount;i++){
 		vector<int> hand = 
@@ -25,8 +30,9 @@ void initilizePlayers(){
 	}
 }
 
-void getPlayerHands(){
+void Dealer::getPlayerHands(){
 	for(int i=0;i<PlayerCount;i++){
+		players.insert(std::make_pair<i,vector<int>());
 		getHand(&hand);
 		pHands->emplace_back(hand);
 		hand.erase();
