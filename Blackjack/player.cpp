@@ -133,8 +133,11 @@ void Player::formulate_strategy(){
 		for(int i = 4; i <= 11; ++i){
 			mMap.insert(make_pair(i,p4_11));
 		}
-		//soft hand, mind = Ace+2 = 3
-		for(int i = 3; i <= 16; ++i){
+		//soft hand, min. = Ace+2 = 3
+		for(int i = 3; i <= 12; ++i){
+			mSoftMap.insert(make_pair(i,s3_17));
+		}
+		for(int i = 13; i <= 16; ++i){
 			mMap.insert(make_pair(i,p13_16));
 			mSoftMap.insert(make_pair(i,s3_17));
 		}
@@ -153,4 +156,3 @@ void Player::formulate_strategy(){
 		mSoftMap.insert(make_pair(17,s3_17));
 		mSoftMap.insert(make_pair(18,s18));
 }
-
